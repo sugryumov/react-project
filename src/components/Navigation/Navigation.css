@@ -1,0 +1,138 @@
+.navigation {
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  width: 100%;
+
+  @media all and (min-width: 600px) {
+    position: inherit;
+    padding: 0;
+    width: auto;
+    height: auto;
+  }
+}
+
+.navigation__hidden {
+  z-index: -5;
+}
+
+.nav {
+  padding: 0;
+  margin-top: 8rem;
+  height: calc(100vh - 8rem);
+
+  @media all and (min-width: 600px) {
+    margin-top: 0;
+    height: auto;
+  }
+}
+
+.nav__list {
+  padding: 2rem 2rem 0;
+  height: 100%;
+  background-color: var(--bg-tertiary);
+
+  @media all and (min-width: 600px) {
+    display: flex;
+    padding: 0;
+  }
+}
+
+.nav__item {
+  text-align: center;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
+  @media all and (min-width: 600px) {
+    &:not(:last-child) {
+      margin-right: 3rem;
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+
+  @media all and (min-width: 900px) {
+    width: 33%;
+  }
+}
+
+.nav__link {
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 2;
+  transition: all 0.2s;
+
+  &:hover {
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid #da1b60;
+    background: linear-gradient(to right, #ff8a00, #da1b60);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-decoration-break: clone;
+  }
+}
+
+.nav__button {
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 2rem;
+  top: 2.5rem;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+
+  @media all and (min-width: 600px) {
+    display: none;
+  }
+}
+
+.nav__line {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--font-color);
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+    top: -1rem;
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: var(--font-color);
+    transition: all .2s;
+  }
+
+  &::before {
+    top: -1rem;
+  }
+
+  &::after {
+    top: 1rem;
+  }
+}
+
+.nav__show {
+  .nav__line {
+    height: 0;
+
+    &::before,
+    &::after {
+      top: 0;
+    }
+
+    &::before {
+      transform: rotate(45deg)
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}

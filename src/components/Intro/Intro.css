@@ -1,0 +1,33 @@
+.intro {
+  padding: 4rem 0;
+  text-align: center;
+
+  @media all and (min-width: 600px) {
+    padding: 6rem 0;
+  }
+}
+
+.intro__container {
+  @media all and (min-width: 600px) {
+    padding: 0 10rem;
+  }
+}
+
+.intro__title {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  line-height: 1.4;
+
+  @media all and (min-width: 600px) {
+    font-size: 2rem;
+  }
+
+  @media all and (min-width: 900px) {
+    font-size: 2.4rem;
+  }
+}
+
+.intro__subtitle {
+  color: var(--accent-color);
+  line-height: 1.6;
+}

@@ -1,0 +1,23 @@
+/* :root {
+  --font-family: Ubuntu, Helvetica, Arial, sans-serif;
+  --font-color: #000;
+  --accent-color: #cbcbcb;
+  --bg-primary: #f7f7f7;
+  --bg-secondary: #fff;
+  --bg-tertiary: #ececec;
+  --font-size-mobile: 1.4rem;
+  --font-size-desktop: 1.7rem;
+  --font-size-title: 1.8rem;
+} */
+
+:root {
+  --font-family: Ubuntu, Helvetica, Arial, sans-serif;
+  --font-color: #fff;
+  --accent-color: #c2c2c2;
+  --bg-primary: #100e17;
+  --bg-secondary: #1c1c1c;
+  --bg-tertiary: #100e17;
+  --font-size-mobile: 1.4rem;
+  --font-size-desktop: 1.7rem;
+  --font-size-title: 1.8rem;
+}
