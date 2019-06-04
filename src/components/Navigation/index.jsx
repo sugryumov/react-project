@@ -26,16 +26,16 @@ class Navigation extends React.Component {
       <nav className="nav">
         <ul className="nav__list">
           <li className="nav__item">
+            <a href="#" className="nav__link">Главная</a>
+          </li>
+          <li className="nav__item">
             <a href="#" className="nav__link">Статьи</a>
           </li>
           <li className="nav__item">
             <a href="#" className="nav__link">Пользователи</a>
           </li>
           <li className="nav__item">
-            <a href="#" className="nav__link">JavaScript</a>
-          </li>
-          <li className="nav__item">
-            <a href="#" className="nav__link">React</a>
+            <a href="#" className="nav__link">Коментарии</a>
           </li>
         </ul>
       </nav>

@@ -16,22 +16,17 @@ class Article extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isLike: false,
+      counter: 0,
     };
 
-    this.state = {
-      isLike: false
-    };
-
-    this.hundleClick = this.hundleClick.bind(this);
     this.like = this.like.bind(this);
   }
 
   render() {
     const { article } = this.props
 
-    // const body = this.state.isOpen && <section className="article__excerpt">{ article.excerpt }</section>
-  
     return (
       <div className="article">
         <img className="article__img" src={ article.img }/>
@@ -46,30 +41,19 @@ class Article extends React.Component {
           <div className="article__info">
             <p className="article__meta">{ (new Date( article.date )).toDateString() }</p>
             <div className="article__like">
-              <div className="like__count">50</div>
+              <div className="like__count">{(this.state.isLike ? this.state.counter + 1 : this.state.counter)}</div>
               <div className={(this.state.isLike ? 'like__icon--active' : 'like__icon')} onClick = { this.like }>
               </div>
             </div>
           </div>
-          
-          {/* <button className="article__btn" onClick = { this.hundleClick }>
-            { this.state.isOpen ? 'Скрыть' : 'Читать статью' }
-          </button>
-          { body } */}
         </div>
       </div>
     )
   }
 
-  hundleClick() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
   like() {
     this.setState({
-      isLike: !this.state.isLike
+      isLike: !this.state.isLike,
     });
   }
 }
