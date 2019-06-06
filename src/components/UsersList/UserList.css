@@ -1,0 +1,25 @@
+.users {
+  padding: 30px 0;
+}
+
+.users__title {
+  text-align: center;
+}
+
+.user__list {
+  padding: 50px;
+}
+
+.user__item {
+  &:not(:last-child) {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gray;
+  }
+}
+
+.user__info {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

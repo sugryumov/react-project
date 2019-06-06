@@ -1,6 +1,8 @@
 .intro {
-  padding: 4rem 0;
+  height: calc(100vh - 260px);
+  box-sizing: border-box;
   text-align: center;
+  padding: 4rem 0;
 
   @media all and (min-width: 600px) {
     padding: 6rem 0;

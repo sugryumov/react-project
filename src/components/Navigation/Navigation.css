@@ -63,6 +63,7 @@
   font-size: 1.6rem;
   line-height: 2;
   transition: all 0.2s;
+  cursor: pointer;
 
   &:hover {
     padding-bottom: 0.15rem;

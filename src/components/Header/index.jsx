@@ -1,8 +1,9 @@
 import React from 'react';
 
-import './Header.css'
-import Navigation from '../Navigation'
-import Logotype from '../Logotype'
+import Navigation from '../Navigation';
+import Logotype from '../Logotype';
+
+import './Header.css';
 
 class Header extends React.Component {
   constructor(props) {
@@ -10,11 +11,13 @@ class Header extends React.Component {
   }
 
   render() {
+    const {pages, setPageId} = this.props
+
     return (
       <header className="header">
         <div className="container header__container">
           <Logotype />
-          <Navigation />
+          <Navigation pages={ pages } setPageId={ setPageId } />
         </div>
       </header>
     )

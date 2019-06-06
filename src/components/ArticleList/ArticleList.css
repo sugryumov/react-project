@@ -1,0 +1,30 @@
+.articles__pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+.pagination__list {
+  display: flex;
+  border: 1px solid orange;
+  border-radius: 0.4rem;
+}
+
+.pagination__item {
+  width: 5rem;
+  height: 4rem;
+}
+
+.pagination__link {
+  display: block;
+  text-align: center;
+  line-height: 4rem;
+
+  &:hover {
+    background: linear-gradient(to right, #ff8a00, #da1b60);
+  }
+}
+
+.pagination__item--active {
+  background: linear-gradient(to right,#ff8a00,#da1b60);
+}

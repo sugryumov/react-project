@@ -9,21 +9,10 @@ import './styles/global.css'
 /* import images */
 import './img/favicon.ico'
 
-/* import articles */
-import articles from './fixtures'
-
 /* import components */
-import Header from './components/Header';
-import Intro from './components/Intro'
-import ArticleList from './components/ArticleList';
-import Footer from './components/Footer';
+import Main from './components/Main';
 
 ReactDOM.render(
-  <div>
-    <Header />
-    <Intro />
-    <ArticleList articles={ articles } />
-    <Footer />
-  </div>,
+    <Main />,
   document.getElementById('app')
 );

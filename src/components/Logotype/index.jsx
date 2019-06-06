@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Logotype.css'
+import './Logotype.css';
 
 function Logotype() {
   return (
