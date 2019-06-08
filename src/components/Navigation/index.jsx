@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
 
 import './Navigation.css';
 
@@ -18,6 +19,37 @@ class Navigation extends React.Component {
     }
 
     this.openNavigation = this.openNavigation.bind(this);
+    this.closeNavigationMobile = this.closeNavigationMobile.bind(this);
+  }
+
+  getList() {
+    return this.props.pages.map((item, index) => {
+      return (
+        <li className="nav__item" key={ index }>
+          <NavLink exact={true} activeClassName="nav__link--active" to={ item.path }
+            className="nav__link"
+            onClick={ () =>  {
+              this.props.setPageId(item.pageId)
+              this.closeNavigationMobile()
+            }}
+          >{ item.name }</NavLink>
+        </li>
+      )
+    });
+  }
+
+  closeNavigationMobile() {
+    const lWidth = window.screen.width;
+
+    if (lWidth <= 600) {
+      this.setState ({
+        isOpen: false
+      })
+    } else {
+      this.setState ({
+        isOpen: open
+      })
+    }
   }
 
   openNavigation() {
@@ -26,24 +58,13 @@ class Navigation extends React.Component {
     });
   }
 
-  getList() {
-    return this.props.pages.map((item, index) => {
-      return (
-        <li className="nav__item" key={ index }>
-          <span
-            className="nav__link"
-            onClick={ () => this.props.setPageId(item.pageId) }
-          >{ item.name }</span>
-        </li>
-      )
-    });
-  }
-
   render() {
     const navigation = this.state.isOpen &&
       <nav className="nav">
         <ul className="nav__list">
-          { this.getList() }
+          <Router>
+            { this.getList() }
+          </Router>
         </ul>
       </nav>
 

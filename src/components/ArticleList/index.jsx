@@ -30,15 +30,15 @@ class ArticleList extends React.Component {
           </ul>
 
           <div className="articles__pagination">
-            <ul class="pagination__list">
-              <li class="pagination__item pagination__item--active">
-                <a class="pagination__link" href="#">1</a>
+            <ul className="pagination__list">
+              <li className="pagination__item pagination__item--active">
+                <a className="pagination__link" href="#">1</a>
               </li>
-              <li class="pagination__item">
-                <a class="pagination__link" href="#">2</a>
+              <li className="pagination__item">
+                <a className="pagination__link" href="#">2</a>
               </li>
-              <li class="pagination__item">
-                <a class="pagination__link" href="#">3</a>
+              <li className="pagination__item">
+                <a className="pagination__link" href="#">3</a>
               </li>
             </ul>
           </div>

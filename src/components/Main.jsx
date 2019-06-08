@@ -13,10 +13,10 @@ class Main extends React.Component {
     }
 
     this.pages = [
-      { pageId: 0, name: 'Главная' },
-      { pageId: 1, name: 'Статьи' },
-      { pageId: 2, name: 'Пользователи' },
-      { pageId: 3, name: 'Контакты' }
+      { pageId: 0, name: 'Главная', path: '/' },
+      { pageId: 1, name: 'Статьи', path: '/article' },
+      { pageId: 2, name: 'Пользователи', path: '/users' },
+      { pageId: 3, name: 'Контакты', path: '/contacts' }
     ]
 
     this.setPageId = this.setPageId.bind(this);
