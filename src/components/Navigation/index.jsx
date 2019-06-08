@@ -69,7 +69,7 @@ class Navigation extends React.Component {
       </nav>
 
     return(
-      <div>
+      <>
         <div className={ "navigation " + (this.state.isOpen ? 'navigation__open' : 'navigation__hidden') }>
           { navigation }
         </div>
@@ -79,7 +79,7 @@ class Navigation extends React.Component {
           onClick = { this.openNavigation }>
           <span className="nav__line"></span>
         </button>
-      </div>
+      </>
     )
   }
 }

@@ -30,11 +30,11 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <Header pages={ this.pages } setPageId={ this.setPageId }/>
         <Content pageId={ this.state.activePageId }/>
         <Footer />
-      </div>
+      </>
     )
   }
 }

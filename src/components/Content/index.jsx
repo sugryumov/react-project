@@ -2,8 +2,8 @@ import React from 'react';
 
 import Intro from '../Intro/';
 import ArticleList from '../ArticleList/';
-import UsersList from '../UsersList/index';
-import NotFound from '../NotFound/index';
+import UsersList from '../UsersList/';
+import NotFound from '../NotFound/';
 
 
 class Content extends React.Component {
@@ -31,9 +31,9 @@ class Content extends React.Component {
 
   render() {
     return(
-      <div>
+      <>
         { this.getPageComponent() }
-      </div>
+      </>
     )
   }
 }

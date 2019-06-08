@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import User from '../User/'
+
 import './UserList.css';
 
 class UserList extends React.Component {
@@ -40,13 +42,9 @@ class UserList extends React.Component {
           <h2 className="users__title">Пользователи</h2>
           <div className="user__list">
             { this.state.isLoading && <span>Loading...</span> }
-            { this.state.users.map((user) => {
+            { this.state.users.map((user, index) => {
                 return (
-                  <div className="user__item">
-                    <p className="user__info" key={ user.id }>Name: { user.name }</p>
-                    <p className="user__info" key={ user.id }>Email: { user.email }</p>
-                    <p className="user__info" key={ user.id }>Phone: { user.phone }</p>
-                  </div>
+                  <User user={ user } key={ index }/>
                 )
               })
             }
