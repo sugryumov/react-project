@@ -1,6 +1,6 @@
 export default [
   {
-    "id": "56c782f18990ecf954f6e027",
+    "id": "2019-04-09",
     "date": "2019-04-09T15:03:23.000Z",
     "img": './img/preview.jpeg',
     "title": "React Is Awesome!!!",
@@ -35,7 +35,7 @@ export default [
     ]
   },
   {
-    "id": "56c782f17b4e0ba78c7ad717",
+    "id": "2019-03-12",
     "date": "2019-03-12T18:03:23.000Z",
     "img": './img/preview-2.jpeg',
     "title": "Quis occaecat",
@@ -55,7 +55,7 @@ export default [
     ]
   },
   {
-    "id": "56c782f1e17f4f9311dfaa2c",
+    "id": "2019-03-09",
     "date": "2019-03-09T23:03:23.000Z",
     "img": './img/preview-3.jpeg',
     "title": "Voluptate est officia",
@@ -75,7 +75,7 @@ export default [
     ]
   },
   {
-    "id": "56c782f197fe2bad471b3740",
+    "id": "2016-06-04",
     "date": "2016-06-04T15:03:23.000Z",
     "img": './img/preview-4.jpeg',
     "title": "Ex sunt sunt aliqua",

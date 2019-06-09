@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from "react-router-dom";
 
 import Intro from '../Intro/';
-import ArticleList from '../ArticleList/';
+import ArticleContainer from '../ArticleContainer/';
 import UsersList from '../UsersList/';
 import NotFound from '../NotFound/';
 
@@ -16,7 +16,7 @@ class Content extends React.Component {
     return(
       <Switch>
         <Route path='/' exact component={Intro} />
-        <Route path='/articles' component={ArticleList} />
+        <Route path='/articles' component={ArticleContainer} />
         <Route path='/users' component={UsersList} />
         <Route path='/contacts' component={NotFound} />
       </Switch>

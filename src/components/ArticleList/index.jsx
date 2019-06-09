@@ -1,24 +1,41 @@
 import React from 'react';
-
-import Article from '../Article';
+import { Link } from 'react-router-dom';
 
 import './ArticleList.css'
 
-import articles from '../../fixtures';
+import '../../img/preview.jpeg';
+import '../../img/preview-2.jpeg';
+import '../../img/preview-3.jpeg';
+import '../../img/preview-4.jpeg';
+import '../../img/preview-5.jpeg';
+import '../../img/preview-6.jpeg';
+import '../../img/icon-like.svg';
+import '../../img/icon-like-active.svg';
 
 class ArticleList extends React.Component {
   constructor(props) {
-    super(props)
-
-    this.state = {
-      articles
-    }
+    super(props);
   }
 
   render() {
-    const articleElements = this.state.articles.map(article => 
+    const articleElements = this.props.articleList.map(article => 
       <li className="articles__item" key = { article.id }>
-        <Article article = { article } />
+        <div className="article">
+          <img className="article__img" src={ article.img } alt=""/>
+
+          <div className="article__data">
+            <h3 className="article__title">{ article.title }</h3>
+            <section className="article__excerpt">
+              { article.excerpt }...
+              <Link to={'/articles/' + article.id} className="article__link">Читать дальше</Link>
+            </section>
+
+            <div className="article__info">
+              <p className="article__meta">{ (new Date( article.date )).toDateString() }</p>
+              <p className="article__view">views {this.props.counterViews}</p>
+            </div>
+          </div>
+        </div>
       </li>
     )
 
