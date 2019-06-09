@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './Header/';
 import Content from './Content';
@@ -9,32 +10,32 @@ class Main extends React.Component {
     super(props);
 
     this.state = {
-      activePageId: 0
+      pagePath: '/'
     }
 
     this.pages = [
-      { pageId: 0, name: 'Главная', path: '/' },
-      { pageId: 1, name: 'Статьи', path: '/article' },
-      { pageId: 2, name: 'Пользователи', path: '/users' },
-      { pageId: 3, name: 'Контакты', path: '/contacts' }
+      { name: 'Главная', path: '/' },
+      { name: 'Статьи', path: '/articles' },
+      { name: 'Пользователи', path: '/users' },
+      { name: 'Контакты', path: '/contacts' }
     ]
 
-    this.setPageId = this.setPageId.bind(this);
+    this.setPagePath = this.setPagePath.bind(this);
   }
 
-  setPageId(pageId) {
+  setPagePath(path) {
     this.setState({
-      activePageId: pageId
+      pagePath: path
     })
   }
 
   render() {
     return (
-      <>
-        <Header pages={ this.pages } setPageId={ this.setPageId }/>
-        <Content pageId={ this.state.activePageId }/>
-        <Footer />
-      </>
+      <Router>
+          <Header pages={ this.pages } setPagePath={ this.setPagePath }/>
+          <Content pagePath={ this.state.pagePath }/>
+          <Footer />
+      </ Router>
     )
   }
 }

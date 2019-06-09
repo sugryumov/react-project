@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from "react-router-dom";
 
 import Intro from '../Intro/';
 import ArticleList from '../ArticleList/';
@@ -9,31 +10,16 @@ import NotFound from '../NotFound/';
 class Content extends React.Component {
   constructor(props) {
     super(props);
-
-    this.getPageComponent = this.getPageComponent.bind(this);
-  }
-
-  getPageComponent() {
-    switch (this.props.pageId) {
-      case 0:
-        return <Intro />
-      
-      case 1:
-        return <ArticleList />
-
-      case 2:
-        return <UsersList />
-
-      default:
-        return <NotFound />
-    }
   }
 
   render() {
     return(
-      <>
-        { this.getPageComponent() }
-      </>
+      <Switch>
+        <Route path='/' exact component={Intro} />
+        <Route path='/articles' component={ArticleList} />
+        <Route path='/users' component={UsersList} />
+        <Route path='/contacts' component={NotFound} />
+      </Switch>
     )
   }
 }

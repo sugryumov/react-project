@@ -18,7 +18,7 @@ class ArticleList extends React.Component {
   render() {
     const articleElements = this.state.articles.map(article => 
       <li className="articles__item" key = { article.id }>
-        <Article article = { article }/>
+        <Article article = { article } />
       </li>
     )
 

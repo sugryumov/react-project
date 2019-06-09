@@ -11,13 +11,13 @@ class Header extends React.Component {
   }
 
   render() {
-    const {pages, setPageId} = this.props
+    const {pages, setPagePath} = this.props
 
     return (
       <header className="header">
         <div className="container header__container">
           <Logotype />
-          <Navigation pages={ pages } setPageId={ setPageId } />
+          <Navigation pages={ pages } setPagePath={ setPagePath } />
         </div>
       </header>
     )

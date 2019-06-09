@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Article.css';
 import '../../img/preview.jpeg';
@@ -33,7 +34,7 @@ class Article extends React.Component {
           <h3 className="article__title">{ article.title }</h3>
           <section className="article__excerpt">
             { article.excerpt }...
-            <a href="#" className="article__link">Читать дальше</a>
+            <Link to={'/articles/' + article.id} className="article__link">Читать дальше</Link>
           </section>
 
           <div className="article__info">

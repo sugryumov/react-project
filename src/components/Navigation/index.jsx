@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import './Navigation.css';
 
@@ -29,7 +29,7 @@ class Navigation extends React.Component {
           <NavLink exact={true} activeClassName="nav__link--active" to={ item.path }
             className="nav__link"
             onClick={ () =>  {
-              this.props.setPageId(item.pageId)
+              this.props.setPagePath(item.path)
               this.closeNavigationMobile()
             }}
           >{ item.name }</NavLink>
@@ -62,9 +62,7 @@ class Navigation extends React.Component {
     const navigation = this.state.isOpen &&
       <nav className="nav">
         <ul className="nav__list">
-          <Router>
-            { this.getList() }
-          </Router>
+          { this.getList() }
         </ul>
       </nav>
 
