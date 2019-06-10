@@ -16,23 +16,31 @@ class Article extends React.Component {
   }
 
   render() {
-    const { selectedArticle } = this.props;
-
     return (
       <div className="article-page">
         <div className="container">
-          <h1>{this.props.selectedArticle.title}</h1>
+          <h1 className="article-page__title">{this.props.selectedArticle.title}</h1>
           <p className="article-page__text">{ this.props.selectedArticle.text }</p>
 
-          <div className="article__like">
-            <div className="like__count">{ this.state.isLike ? this.state.countLike + 1 : this.state.countLike }</div>
-            <div className={ (this.state.isLike ? 'like__icon--active' : 'like__icon') } onClick = { this.like }></div>
+          <div className="article-page__controls">
+            <Route 
+              path={'/articles/:id'}
+              exact
+              render={ () => {
+                return (
+                  <div className="controls__link">
+                    <Link className="controls__link--back" to={'/articles'}>Назад</Link>
+                    {/* <Link to={'/'}>На главную</Link> */}
+                  </div>
+                )
+              }}
+            />
+
+            <div className="controls__like">
+              <div className="like__count">{ this.state.isLike ? this.state.countLike + 1 : this.state.countLike }</div>
+              <div className={ (this.state.isLike ? 'like__icon--active' : 'like__icon') } onClick = { this.like }></div>
+            </div>
           </div>
-          <Route 
-            path={'/articles/:id'}
-            exact
-            render={ () => <Link to={'/articles'}>Назад</Link> }
-          />
         </div>
       </div>
     )

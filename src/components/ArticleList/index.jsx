@@ -32,7 +32,7 @@ class ArticleList extends React.Component {
 
             <div className="article__info">
               <p className="article__meta">{ (new Date( article.date )).toDateString() }</p>
-              <p className="article__view">views {this.props.counterViews}</p>
+              <p className="article__view">views 7</p>
             </div>
           </div>
         </div>

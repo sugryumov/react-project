@@ -1,0 +1,66 @@
+.article-page {
+  padding: 5rem 0;
+}
+
+.article-page__title {
+  padding-bottom: 2rem;
+}
+
+.article-page__text {
+  padding-bottom: 2rem;
+  font-size: 2rem;
+  line-height: 1.6;
+}
+
+.article-page__controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls__link--back {
+  padding-bottom: 0.15rem;
+  background: linear-gradient(to right,#ff8a00,#da1b60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+  white-space: nowrap;
+
+  &:hover {
+    border-bottom: 1px solid #da1b60;
+  }
+}
+
+
+
+.controls__like {
+  display: flex;
+  justify-content: center;
+}
+
+.like__icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+  background-image: url(../../img/icon-like.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.like__icon--active {
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+  background-image: url(../../img/icon-like-active.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.like__img {
+  width: 100%;
+  height: auto;
+}
+
+.like__count {
+  margin-right: 1rem;
+  color: var(--accent-color);
+}
