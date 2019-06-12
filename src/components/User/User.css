@@ -1,17 +1,15 @@
-.user__list {
-  padding: 50px;
+.user-page {
+  padding: 3rem 0;
 }
 
-.user__item {
-  &:not(:last-child) {
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid gray;
-  }
+.user-page__title {
+  text-align: center;
 }
 
-.user__info {
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
+.user__info--wrap {
+  padding: 5rem 0;
+}
+
+.user__link {
+  margin-left: 2rem;
 }

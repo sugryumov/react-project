@@ -27,12 +27,12 @@ class ArticleList extends React.Component {
             <h3 className="article__title">{ article.title }</h3>
             <section className="article__excerpt">
               { article.excerpt }...
-              <Link to={'/articles/' + article.id} className="article__link">Читать дальше</Link>
+              <Link to={'/articles/' + article.id} className="link article__link">Читать дальше</Link>
             </section>
 
             <div className="article__info">
               <p className="article__meta">{ (new Date( article.date )).toDateString() }</p>
-              <p className="article__view">views 7</p>
+              <p className="article__view">Like 7</p>
             </div>
           </div>
         </div>

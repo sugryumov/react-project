@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Intro from '../Intro/';
 import ArticleContainer from '../ArticleContainer/';
-import UsersList from '../UsersList/';
+import UsersContainer from '../UserContainer/';
 import NotFound from '../NotFound/';
 
 
@@ -17,7 +17,7 @@ class Content extends React.Component {
       <Switch>
         <Route path='/' exact component={Intro} />
         <Route path='/articles' component={ArticleContainer} />
-        <Route path='/users' component={UsersList} />
+        <Route path='/users' component={UsersContainer} />
         <Route path='/contacts' component={NotFound} />
       </Switch>
     )

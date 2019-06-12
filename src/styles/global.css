@@ -68,3 +68,21 @@ button {
     margin: 0 auto;
   }
 }
+
+.link {
+  padding-bottom: 0.15rem;
+  background: linear-gradient(to right,#ff8a00,#da1b60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+  white-space: nowrap;
+  font-size: 1.6rem;
+
+  @media all and (min-width: 600px) {
+    font-size: 1.8rem;
+  }
+
+  &:hover {
+    border-bottom: 1px solid #da1b60;
+  }
+}

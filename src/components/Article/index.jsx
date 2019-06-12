@@ -3,6 +3,8 @@ import { Link, Route } from 'react-router-dom';
 
 import './Article.css';
 
+import '../../img/preview.jpeg'
+
 class Article extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,15 @@ class Article extends React.Component {
   }
 
   render() {
+    const showComments = this.props.selectedArticle.comments.map(comment => {
+      return (
+        <div className="article-page__comment" key={ comment.id }>
+          <p className="comments__user">{ comment.user }</p>
+          <p className="comments__text">{ comment.text }</p>
+        </div>
+      )
+    })
+
     return (
       <div className="article-page">
         <div className="container">
@@ -29,8 +40,7 @@ class Article extends React.Component {
               render={ () => {
                 return (
                   <div className="controls__link">
-                    <Link className="controls__link--back" to={'/articles'}>Назад</Link>
-                    {/* <Link to={'/'}>На главную</Link> */}
+                    <Link className="link" to={'/articles'}>Назад</Link>
                   </div>
                 )
               }}
@@ -41,6 +51,10 @@ class Article extends React.Component {
               <div className={ (this.state.isLike ? 'like__icon--active' : 'like__icon') } onClick = { this.like }></div>
             </div>
           </div>
+
+          <p className="article-page__comments">Коментарии</p>
+
+          <>{ showComments }</>
         </div>
       </div>
     )
