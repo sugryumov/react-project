@@ -3,8 +3,6 @@ import { Link, Route } from 'react-router-dom';
 
 import './Article.css';
 
-import '../../img/preview.jpeg'
-
 class Article extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +43,6 @@ class Article extends React.Component {
                 )
               }}
             />
-
             <div className="controls__like">
               <div className="like__count">{ this.state.isLike ? this.state.countLike + 1 : this.state.countLike }</div>
               <div className={ (this.state.isLike ? 'like__icon--active' : 'like__icon') } onClick = { this.like }></div>
@@ -56,13 +53,22 @@ class Article extends React.Component {
 
           <>
             { showComments }
-            <p className="article-page__comments">Написать комментарий</p>
+            {
+              this.props.isLoggedIn
+              ?
+              <>
+                <p className="article-page__comments">Написать комментарий</p>
 
-            <form className="new-comment__form">
-              <input type="text" className="new-comment__input new-comment__author" placeholder="Ваше имя"/>
-              <textarea type="text" className="new-comment__input new-comment__textarea" rows="8" placeholder="Ваш комментарий"></textarea>
-              <button className="new-comment__btn">Написать</button>
-            </form>
+                <form className="new-comment__form">
+                  <textarea type="text" className="new-comment__input new-comment__textarea" rows="8" placeholder="Ваш комментарий"></textarea>
+                  <button className="new-comment__btn">Написать</button>
+                </form>
+              </>
+              :
+              <>
+                <p className="article-page__comments--logout">Для обсуждения <Link to="/login" className="link comment__link">войдите</Link> на сайт</p>
+              </>
+            }
           </>
         </div>
       </div>

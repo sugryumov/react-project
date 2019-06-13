@@ -17,7 +17,12 @@ class Header extends React.Component {
       <header className="header">
         <div className="container header__container">
           <Logotype />
-          <Navigation pages={ pages } setPagePath={ setPagePath } />
+          <Navigation
+            pages={ pages }
+            setPagePath={ setPagePath }
+            isLoggedIn={ this.props.isLoggedIn }
+            userLogin={ this.props.userLogin }
+          />
         </div>
       </header>
     )

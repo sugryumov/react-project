@@ -24,6 +24,12 @@ class Navigation extends React.Component {
 
   getList() {
     return this.props.pages.map((item, index) => {
+      if (this.props.isLoggedIn && item.path === '/login') {
+        return
+      } else if (this.props.isLoggedIn && item.path === '/registration') {
+        return
+      }
+
       return (
         <li className="nav__item" key={ index }>
           <NavLink exact={true} activeClassName="nav__link--active" to={ item.path }
@@ -59,10 +65,13 @@ class Navigation extends React.Component {
   }
 
   render() {
+    const isLoggined = this.props.isLoggedIn && <p className='user__name'>{ this.props.userLogin }</p>
+
     const navigation = this.state.isOpen &&
       <nav className="nav">
         <ul className="nav__list">
           { this.getList() }
+          { isLoggined }
         </ul>
       </nav>
 

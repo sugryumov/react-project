@@ -11,15 +11,39 @@ class Registration extends React.Component {
     return (
       <section className="registration">
         <div className="container registration__container">
-          <h1 className="registration__title">Регистрация</h1>
+        {
+          this.props.isRegitration
+          ?
+          <>
+            <h1 className="registration__text">Вы успешно зарегистрировались!<br />Зайдите на сайт используя свой логин и пароль</h1>
+          </>
+          :
+          <div>
+            <h1 className="registration__title">Регистрация</h1>
 
-          <form className="form">
-            <input type="text" className="form__input" placeholder="Логин" />
-            <input type="email" className="form__input" placeholder="E-mail" />
-            <input type="password" className="form__input" placeholder="Пароль" />
-
-            <button className="form__button">Зарегистрироваться</button>
-          </form>
+            <form className="form">
+              <input
+                type="text"
+                className="form__input"
+                placeholder="Логин"
+                onChange={ (e) => this.props.onInputChangeNewName(e) }
+              />
+              <input
+                type="password"
+                className="form__input"
+                placeholder="Пароль"
+                onChange={ (e) => this.props.onInputChangeNewPass(e) }
+              />
+              <button
+                className="form__button"
+                type="button"
+                onClick={ () => this.props.newUser() }
+              >
+                Зарегистрироваться
+              </button>
+            </form>
+          </div>
+        }
         </div>
       </section>
     )
