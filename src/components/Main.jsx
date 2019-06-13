@@ -17,7 +17,9 @@ class Main extends React.Component {
       { name: 'Главная', path: '/' },
       { name: 'Статьи', path: '/articles' },
       { name: 'Пользователи', path: '/users' },
-      { name: 'Контакты', path: '/contacts' }
+      { name: 'Контакты', path: '/contacts' },
+      { name: 'Войти', path: '/login' },
+      { name: 'Регистрация', path: '/registration' }
     ]
 
     this.setPagePath = this.setPagePath.bind(this);

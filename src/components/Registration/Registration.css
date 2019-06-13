@@ -1,0 +1,16 @@
+.registration {
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 3rem 0;
+
+  @media all and (min-width: 900px) {
+    height: calc(100vh - 29rem);
+  }
+}
+
+.registration__title {
+  padding-bottom: 3rem;
+  font-size: 3.4rem;
+  text-align: center;
+}

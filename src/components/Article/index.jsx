@@ -52,9 +52,18 @@ class Article extends React.Component {
             </div>
           </div>
 
-          <p className="article-page__comments">Коментарии</p>
+          <p className="article-page__comments">Комментарии</p>
 
-          <>{ showComments }</>
+          <>
+            { showComments }
+            <p className="article-page__comments">Написать комментарий</p>
+
+            <form className="new-comment__form">
+              <input type="text" className="new-comment__input new-comment__author" placeholder="Ваше имя"/>
+              <textarea type="text" className="new-comment__input new-comment__textarea" rows="8" placeholder="Ваш комментарий"></textarea>
+              <button className="new-comment__btn">Написать</button>
+            </form>
+          </>
         </div>
       </div>
     )
