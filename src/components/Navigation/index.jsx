@@ -36,7 +36,6 @@ class Navigation extends React.Component {
           <NavLink exact={true} activeClassName="nav__link--active" to={ item.path }
             className="nav__link"
             onClick={ () =>  {
-              this.props.setPagePath(item.path)
               this.closeNavigationMobile()
             }}
           >{ item.name }</NavLink>
@@ -93,6 +92,7 @@ class Navigation extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  pages: state.pages.pages,
   isLoggedIn: state.login.isLoggedIn,
   userLogin: state.login.userLogin,
 });

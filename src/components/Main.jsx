@@ -9,39 +9,14 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      pagePath: '/',
-    }
-
-    this.pages = [
-      { name: 'Главная', path: '/' },
-      { name: 'Статьи', path: '/articles' },
-      { name: 'Пользователи', path: '/users' },
-      { name: 'Контакты', path: '/contacts' },
-      { name: 'Войти', path: '/login' },
-      { name: 'Регистрация', path: '/registration' }
-    ]
-
-    this.setPagePath = this.setPagePath.bind(this);
-  }
-
-  setPagePath(path) {
-    this.setState({
-      pagePath: path
-    })
+    this.state = {}
   }
 
   render() {
     return (
       <Router>
-          <Header
-            pages={ this.pages }
-            setPagePath={ this.setPagePath }
-          />
-          <Content
-            articles={ this.state.articles }
-            pagePath={ this.state.pagePath }
-          />
+          <Header />
+          <Content articles={ this.state.articles }/>
           <Footer />
       </ Router>
     )

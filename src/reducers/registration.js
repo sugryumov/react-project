@@ -7,6 +7,7 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
+
   switch(action.type) {
     case constants.USER_INPUT_REGISTRATION_CHANGED_LOG:
       return {
