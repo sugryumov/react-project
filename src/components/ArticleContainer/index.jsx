@@ -34,10 +34,7 @@ class ArticleContainer extends React.Component {
             const articleId = props.match.params.id;
             const selectedArticle = this.state.articles.find(article => article.id === articleId);
             return (
-              <Article
-                selectedArticle={ selectedArticle }
-                isLoggedIn={ this.props.isLoggedIn }
-              />
+              <Article selectedArticle={ selectedArticle } />
             )
           }}
         />

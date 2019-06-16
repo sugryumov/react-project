@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 
 import './Navigation.css';
@@ -91,4 +92,9 @@ class Navigation extends React.Component {
   }
 }
 
-export default Navigation;
+const mapStateToProps = state => ({
+  isLoggedIn: state.login.isLoggedIn,
+  userLogin: state.login.userLogin,
+});
+
+export default connect(mapStateToProps)(Navigation);

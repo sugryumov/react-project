@@ -20,8 +20,6 @@ class Header extends React.Component {
           <Navigation
             pages={ pages }
             setPagePath={ setPagePath }
-            isLoggedIn={ this.props.isLoggedIn }
-            userLogin={ this.props.userLogin }
           />
         </div>
       </header>

@@ -1,6 +1,7 @@
 .registration {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: auto;
   padding: 3rem 0;
 
