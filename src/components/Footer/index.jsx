@@ -5,10 +5,6 @@ import './Footer.css'
 class Footer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      people: []
-    }
   }
 
   render() {

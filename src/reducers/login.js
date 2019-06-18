@@ -1,37 +1,41 @@
-import * as constants from '../constants';
+import { USER_INPUT_CHANGED_LOGIN, USER_INPUT_CHANGED_PASSWORD, USER_LOGGED_IN, USER_LOG_OUT } from '../constants';
 
 const initialState = {
   userLogin: null,
-  userPassword: '',
+  userPassword: null,
   isLoggedIn: false,
-};
+  error: false
+}
 
-export default function(state = initialState, action) {
+export function loginReducer(state = initialState, action) {
 
   switch(action.type) {
-    case constants.USER_INPUT_LOGIN_CHANGED_LOG: {
+    case USER_INPUT_CHANGED_LOGIN:
       return {
         ...state,
-        userLogin: action.payload,
-      };
-    }
+        userLogin: action.payload
+      }
 
-    case constants.USER_INPUT_LOGIN_CHANGED_PASS: {
+    case USER_INPUT_CHANGED_PASSWORD:
       return {
         ...state,
         userPassword: action.payload
       }
-    }
 
-    case constants.USER_LOGGED_IN: {
+    case USER_LOGGED_IN:
       return {
         ...state,
-        isLoggedIn: action.payload
+        isLoggedIn: action.payload,
+        error: action.error
       }
-    }
+
+    case USER_LOG_OUT:
+      return {
+        ...state,
+        isLoggedIn: action.payload,
+        error: false
+      }
   }
 
   return state;
 }
-
- 

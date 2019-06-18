@@ -2,6 +2,7 @@ import React from 'react';
 
 import Navigation from '../Navigation';
 import Logotype from '../Logotype';
+import UserControl from '../UserControl';
 
 import './Header.css';
 
@@ -16,6 +17,7 @@ class Header extends React.Component {
         <div className="container header__container">
           <Logotype />
           <Navigation />
+          <UserControl />
         </div>
       </header>
     )

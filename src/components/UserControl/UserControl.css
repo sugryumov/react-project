@@ -1,0 +1,38 @@
+.user-control {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+}
+
+.user-control__name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 3.4rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right,#ff8a00,#da1b60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+  text-align: center;
+}
+
+.user-control__logout-wrap {
+  display: flex;
+}
+
+.user-control__button-logout {
+  -webkit-appearance: none;
+    border: none;
+    background-image: linear-gradient(to top left,#ff8a00,#da1b60);
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 3rem;
+    margin-left: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.user-control__button {
+    margin-right: 2rem;
+}

@@ -8,15 +8,17 @@ import Footer from './Footer';
 class Main extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {}
   }
 
   render() {
+    if (performance.navigation.type == 1) {
+      sessionStorage.removeItem('userList');
+    }
+
     return (
       <Router>
           <Header />
-          <Content articles={ this.state.articles }/>
+          <Content/>
           <Footer />
       </ Router>
     )

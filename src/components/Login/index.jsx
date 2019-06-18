@@ -1,8 +1,9 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import actions from '../../actions/login';
+import { bindActionCreators } from 'redux';
 
+import login from '../../actions/login';
+import getUsers from '../../actions/user';
 import './Login.css';
 
 class Login extends React.Component {
@@ -10,45 +11,50 @@ class Login extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    const userListStorage = sessionStorage.getItem('userList');
+
+    if (typeof userListStorage === 'undefined' || userListStorage === null) {
+      this.props.actionGetUsers();
+    }
+  }
+
   render() {
     return (
       <section className="login">
         <div className="container login__container">
-        {
-          this.props.isLoggedIn
-          ?
-          <h1 className="login__welcome">Добро пожаловать на сайт { this.props.userLogin }</h1>
-          :
-          <div> 
-            <h1 className="login__title">Вход</h1>
+          {
+            this.props.isLoggedIn
+            ?
+            <h1 className="login__welcome">Добро пожаловать на сайт { this.props.userLogin }</h1>
+            :
+            <>
+              <h1 className="login__title">Вход</h1>
+              <form className="form">
+                <input
+                  type="text"
+                  className="form__input"
+                  placeholder="Логин"
+                  onChange={ (e) => this.props.actionLogin.saveLoginInputValue(e.target.value) }
+                />
+                <input
+                  type="password"
+                  className="form__input"
+                  placeholder="Пароль"
+                  onChange={ (e) => this.props.actionLogin.savePasswordInputValue(e.target.value) }
+                />
+                <button
+                  className="form__button"
+                  type="button"
+                  onClick={ () => this.props.actionLogin.onLogin(this.props.userLogin, this.props.userPassword, this.props.user) }
+                >
+                  Войти
+                </button>
 
-            <form className="form">
-              <input
-                type="text"
-                className="form__input"
-                placeholder="Логин"
-                onChange={ (e) => {
-                  this.props.actions.saveNameInputValue(e.target.value)
-                }}
-              />
-              <input
-                type="password"
-                className="form__input"
-                placeholder="Пароль"
-                onChange={ (e) => {
-                  this.props.actions.savePasswordInputValue(e.target.value)
-                }}
-              />
-              <button
-                className="form__button"
-                type="button"
-                onClick={ () => this.props.actions.onLogin(this.props.userLogin, this.props.userPassword) }
-              >
-                Войти
-              </button>
-            </form>
-          </div>
-        }
+                { this.props.error ? <p className="error">Неверный логин или пароль</p> : null }
+              </form>
+            </>
+          }
         </div>
       </section>
     )
@@ -56,15 +62,16 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.login.isLoggedIn,
   userLogin: state.login.userLogin,
   userPassword: state.login.userPassword,
+  isLoggedIn: state.login.isLoggedIn,
+  error: state.login.error,
+  user: state.user.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  actionLogin: bindActionCreators(login, dispatch),
+  actionGetUsers: bindActionCreators(getUsers, dispatch)
 });
 
-const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Login);
-
-export default Wrapped;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
