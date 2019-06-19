@@ -4,7 +4,7 @@ const initialState = {
   userLogin: null,
   userPassword: null,
   isLoggedIn: false,
-  error: false
+  error: false,
 }
 
 export function loginReducer(state = initialState, action) {
@@ -33,7 +33,10 @@ export function loginReducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: action.payload,
-        error: false
+        error: false,
+        userLogin: null,
+        userPassword: null,
+        isRegistrataion: false
       }
   }
 

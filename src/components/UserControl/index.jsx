@@ -12,6 +12,7 @@ class UserControl extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="user-control">
         {
@@ -37,7 +38,8 @@ class UserControl extends React.Component {
 
 const mapStateToProps = state => ({
   userLogin: state.login.userLogin,
-  isLoggedIn: state.login.isLoggedIn
+  isLoggedIn: state.login.isLoggedIn,
+  isRegistrataion: state.registration.isRegistrataion
 });
 
 const mapDispatchToProps = dispatch => ({
