@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import registration from '../../actions/registration';
+import login from '../../actions/login';
 import getUsers from '../../actions/user';
 
 import './Registration.css';
@@ -12,16 +12,15 @@ class Registration extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    const userListStorage = sessionStorage.getItem('userList');
+  // componentDidMount() {
+  //   const userListStorage = sessionStorage.getItem('userList');
 
-    if (typeof userListStorage === 'undefined' || userListStorage === null) {
-      this.props.actionGetUsers();
-    }
-  }
+  //   if (typeof userListStorage === 'undefined' || userListStorage === null) {
+  //     this.props.actionGetUsers();
+  //   }
+  // }
 
   render() {
-    console.log(this.props)
     return (
       <section className="registration">
         <div className="container registration__container">
@@ -38,18 +37,18 @@ class Registration extends React.Component {
                 type="text"
                 className="form__input"
                 placeholder="Логин"
-                onChange={ (e) => this.props.actionRegistration.saveNewLoginInputValue(e.target.value) }
+                onChange={ (e) => this.props.actionLogin.saveNewLoginInputValue(e.target.value) }
               />
               <input
                 type="password"
                 className="form__input"
                 placeholder="Пароль"
-                onChange={ (e) => this.props.actionRegistration.saveNewPasswordInputValue(e.target.value) }
+                onChange={ (e) => this.props.actionLogin.saveNewPasswordInputValue(e.target.value) }
               />
               <button
                 className="form__button"
                 type="button"
-                onClick={ () => this.props.actionRegistration.onRegistration(this.props.newUserLogin, this.props.newUserPassword, this.props.user) }
+                onClick={ () => this.props.actionLogin.onRegistration(this.props.newUserLogin, this.props.newUserPassword, this.props.user) }
               >
                 Зарегистрироваться
               </button>
@@ -65,15 +64,15 @@ class Registration extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  newUserLogin: state.registration.newUserLogin,
-  newUserPassword: state.registration.newUserPassword,
-  isRegistrataion: state.registration.isRegistrataion,
-  errorEmptyField: state.registration.errorEmptyField,
+  newUserLogin: state.login.newUserLogin,
+  newUserPassword: state.login.newUserPassword,
+  isRegistrataion: state.login.isRegistrataion,
+  errorEmptyField: state.login.errorEmptyField,
   user: state.user.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  actionRegistration: bindActionCreators(registration, dispatch),
+  actionLogin: bindActionCreators(login, dispatch),
   actionGetUsers: bindActionCreators(getUsers, dispatch)
 });
 

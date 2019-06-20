@@ -16,7 +16,7 @@ class Content extends React.Component {
   render() {
     return(
       <Switch>
-        <Route path='/' exact render={() => <Intro /> } />
+        <Route path='/' exact render={ () => <Intro /> } />
         <Route path='/articles' render={ () => <ArticleContainer/> } />
         <Route path='/users' render={ () => <UsersList/> } />
         <Route path='/contacts' render={ () => <NotFound /> } />

@@ -1,16 +1,16 @@
-import { USER_INPUT_CHANGED_LOGIN, USER_INPUT_CHANGED_PASSWORD, USER_LOGGED_IN, USER_LOG_OUT } from '../constants';
+import * as constant from '../constants';
 
 const actionLogin = {
   saveLoginInputValue(value) {
     return {
-      type: USER_INPUT_CHANGED_LOGIN,
+      type: constant.USER_INPUT_CHANGED_LOGIN,
       payload: value
     }
   },
 
   savePasswordInputValue(value) {
     return {
-      type: USER_INPUT_CHANGED_PASSWORD,
+      type: constant.USER_INPUT_CHANGED_PASSWORD,
       payload: value
     }
   },
@@ -25,20 +25,54 @@ const actionLogin = {
     });
 
     return {
-      type: USER_LOGGED_IN,
+      type: constant.USER_LOGGED_IN,
       payload: isRegisteredUser,
       error: errorField
     }
   },
 
   logOut() {
-    sessionStorage.removeItem('userList');
+    // sessionStorage.removeItem('userList');
 
     return {
-      type: USER_LOG_OUT,
+      type: constant.USER_LOG_OUT,
       payload: false
     }
-  }
+  },
+
+  saveNewLoginInputValue(value) {
+    return {
+      type: constant.NEW_USER_INPUT_CHANGED_LOGIN,
+      payload: value
+    }
+  },
+
+  saveNewPasswordInputValue(value) {
+    return {
+      type: constant.NEW_USER_INPUT_CHANGED_PASSWORD,
+      payload: value
+    }
+  },
+
+  onRegistration(saveNewLoginInputValue, saveNewPasswordInputValue, user) {
+    const emptyValue = saveNewLoginInputValue !== null && saveNewPasswordInputValue !== null;
+    const emptyValueError = saveNewLoginInputValue === null || saveNewPasswordInputValue === null;
+    const newUser = user
+
+    if (emptyValue) {
+      newUser.push({
+        username: saveNewLoginInputValue
+      })
+    }
+
+    sessionStorage.setItem("userList", newUser);
+
+    return {
+      type: constant.USER_REGISTRATION,
+      payload: emptyValue,
+      error: emptyValueError,
+    }
+  },
 }
 
 export default actionLogin;

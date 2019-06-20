@@ -11,13 +11,13 @@ class Login extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    const userListStorage = sessionStorage.getItem('userList');
+  // componentDidMount() {
+  //   const userListStorage = sessionStorage.getItem('userList');
 
-    if (typeof userListStorage === 'undefined' || userListStorage === null) {
-      this.props.actionGetUsers();
-    }
-  }
+  //   if (typeof userListStorage === 'undefined' || userListStorage === null) {
+  //     this.props.actionGetUsers();
+  //   }
+  // }
 
   render() {
     return (

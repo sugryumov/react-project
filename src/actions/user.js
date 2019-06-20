@@ -12,10 +12,10 @@ const getUsers = () => {
       .then(response => {
         dispatch({
           type: GET_USERS_SUCCESS,
-          payload: response.data,
+          payload: response.data.slice(0, 6),
         });
 
-        sessionStorage.setItem('userList', JSON.stringify(response.data));
+        // sessionStorage.setItem('userList', JSON.stringify(response.data));
       })
 
       .catch(err => {

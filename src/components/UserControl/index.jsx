@@ -27,8 +27,8 @@ class UserControl extends React.Component {
           </div>
           :
           <div className="user-control__link">
-            <Link to={ '/login'} className="nav__link user-control__button">Войти</Link>
-            <Link to={ '/registration'} className="nav__link">Регистрация</Link>
+            <Link to={ '/login'} className="nav__link user-control__button user-control__button-login">Войти</Link>
+            <Link to={ '/registration'} className="nav__link user-control__button-registration">Регистрация</Link>
           </div>
         }
       </div>
@@ -39,7 +39,6 @@ class UserControl extends React.Component {
 const mapStateToProps = state => ({
   userLogin: state.login.userLogin,
   isLoggedIn: state.login.isLoggedIn,
-  isRegistrataion: state.registration.isRegistrataion
 });
 
 const mapDispatchToProps = dispatch => ({

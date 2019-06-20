@@ -1,5 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import getUsers from '../actions/user';
 
 import Header from './Header/';
 import Content from './Content';
@@ -10,11 +14,11 @@ class Main extends React.Component {
     super(props);
   }
 
-  render() {
-    if (performance.navigation.type == 1) {
-      sessionStorage.removeItem('userList');
-    }
+  componentDidMount() {
+    this.props.actionGetUsers();
+  }
 
+  render() {
     return (
       <Router>
           <Header />
@@ -25,4 +29,13 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+const mapStateToProps = state => ({
+  user: state.user.user,
+  isLoading: state.user.isLoading
+});
+
+const mapDespatchToProps = dispatch => ({
+  actionGetUsers: bindActionCreators(getUsers, dispatch)
+})
+
+export default connect(mapStateToProps, mapDespatchToProps)(Main);

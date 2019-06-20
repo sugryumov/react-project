@@ -1,0 +1,58 @@
+import React from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+
+import actionArticle from '../../actions/article';
+
+class Comment extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const showComments = this.props.comment.map(comment => {
+      return (
+        <div className="article-page__comment" key={ comment.id }>
+          <p className="comments__user">{ comment.name }</p>
+          <p className="comments__text">{ comment.body }</p>
+        </div>
+      )
+    })
+
+    return (
+      <>
+        <p className="article-page__comments">Комментарии</p>
+        <>
+          { showComments }
+          {
+            this.props.isLoggedIn
+            ?
+            <>
+              <p className="article-page__comments">Написать комментарий</p>
+
+              <form className="new-comment__form">
+                <textarea type="text" className="new-comment__input new-comment__textarea" rows="8" placeholder="Ваш комментарий"></textarea>
+                <button className="new-comment__btn">Написать</button>
+              </form>
+            </>
+            :
+            <p className="article-page__comments--logout">Для обсуждения <Link to="/login" className="link comment__link">войдите</Link> на сайт</p>
+            
+          }
+        </>
+      </>
+    )
+  }
+}
+
+const mapStateToProps = state => ({
+  isLoggedIn: state.login.isLoggedIn,
+  comment: state.article.comment,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actionGetArticle: bindActionCreators(actionArticle, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);
