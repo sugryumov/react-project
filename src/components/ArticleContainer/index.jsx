@@ -1,19 +1,14 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import actionArticle from '../../actions/article';
 import Article from '../Article';
 import './ArticleContainer.css';
 
 class ArticleContainer extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    this.props.actionGetArticle.getArticles();
   }
 
   render() {
@@ -27,12 +22,13 @@ class ArticleContainer extends React.Component {
     }
 
     const getImage = this.props.image.map(img => img.download_url);
-    const getArticleList = this.props.article.map((articleData, index) => {
+  
+    const getArticleList = this.props.article.map((articleData, indexImg) => {
       return (
         <li className="articles__item" key={ articleData.id }>
           <div className="article">
 
-            <img src={getImage[index]} alt="" className="article__img"/>
+            <img src={getImage[indexImg]} alt="" className="article__img"/>
 
             <div className="article__data">
               <h3 className="article__title">{ articleData.title }</h3>
@@ -78,7 +74,7 @@ class ArticleContainer extends React.Component {
               </div>
             </section>
           )
-        } } />
+        }}/>
 
         <Route
           path={'/articles/:id'}
@@ -101,8 +97,4 @@ const mapStateToProps = state => ({
   countLike: state.article.countLike,
 });
 
-const mapDispatchToProps = dispatch => ({
-  actionGetArticle: bindActionCreators(actionArticle, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleContainer);
+export default connect(mapStateToProps)(ArticleContainer);

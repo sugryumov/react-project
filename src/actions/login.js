@@ -57,15 +57,14 @@ const actionLogin = {
   onRegistration(saveNewLoginInputValue, saveNewPasswordInputValue, user) {
     const emptyValue = saveNewLoginInputValue !== null && saveNewPasswordInputValue !== null;
     const emptyValueError = saveNewLoginInputValue === null || saveNewPasswordInputValue === null;
-    const newUser = user
 
     if (emptyValue) {
-      newUser.push({
+      user.push({
         username: saveNewLoginInputValue
       })
     }
 
-    sessionStorage.setItem("userList", newUser);
+    // sessionStorage.setItem("userList", newUser);
 
     return {
       type: constant.USER_REGISTRATION,

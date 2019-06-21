@@ -1,4 +1,4 @@
-import { GET_ARTICLE_REQUEST, GET_ARTICLE_SUCCESS, GET_ARTICLE_FAILED, IS_LIKE } from '../constants';
+import { GET_ARTICLE_REQUEST, GET_ARTICLE_SUCCESS, GET_ARTICLE_FAILED, IS_LIKE, USER_COMMENT_CHANGED, USER_COMMENT_SUBMIT } from '../constants';
 import axios from 'axios';
 
 const actionArticle = {
@@ -19,7 +19,7 @@ const actionArticle = {
               type: GET_ARTICLE_SUCCESS,
               dataArticle: article.data.slice(0, 6),
               dataImage: image.data.slice(5, 11),
-              dataComment: comment.data.slice(0, 3),
+              dataComment: comment.data.slice(0, 50),
             })
           }))
           .catch(err => {
@@ -39,6 +39,35 @@ const actionArticle = {
       type: IS_LIKE,
       payload: true,
       countLike: incrementLike
+    }
+  },
+
+  saveUserChandeCommet(value) {
+    return {
+      type: USER_COMMENT_CHANGED,
+      payload: value
+    }
+  },
+
+  submitComment(e, commentText, commentArray, userLogin, selectedPost) {
+    console.log(commentArray)
+    // e.preventDefault();
+    if (!commentText.length) {
+      return console.log('Введите комментарии');
+    }
+ 
+    const newItem = {
+      body: commentText,
+      name: userLogin,
+      postId: selectedPost
+    };
+
+    const addNewComment = commentArray.concat(newItem);
+
+    return {
+      type: USER_COMMENT_SUBMIT,
+      payload: addNewComment,
+      clearTextarea: ''
     }
   }
 }

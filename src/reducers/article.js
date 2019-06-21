@@ -1,9 +1,10 @@
-import { GET_ARTICLE_REQUEST, GET_ARTICLE_SUCCESS, GET_ARTICLE_FAILED, IS_LIKE } from '../constants';
+import { GET_ARTICLE_REQUEST, GET_ARTICLE_SUCCESS, GET_ARTICLE_FAILED, IS_LIKE, USER_COMMENT_CHANGED, USER_COMMENT_SUBMIT } from '../constants';
 
 const initialState = {
   article: [],
   image: [],
   comment: [],
+  commentText: '',
   isLoadingArticle: false,
   articleLoadingError: '',
   isLike: false,
@@ -40,6 +41,19 @@ export function articleReducer(state = initialState, action) {
         ...state,
         isLike: !state.isLike,
         countLike: action.countLike
+      }
+
+    case USER_COMMENT_CHANGED:
+        return {
+          ...state,
+          commentText: action.payload
+        }
+  
+    case USER_COMMENT_SUBMIT:
+      return {
+        ...state,
+        comment: action.payload,
+        commentText: action.clearTextarea
       }
   }
 

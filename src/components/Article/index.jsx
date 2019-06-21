@@ -46,7 +46,7 @@ class Article extends React.Component {
 
             </div>
           </div>
-          <Comment/>
+          <Comment selectedArticle={this.props.selectedArticle}/>
         </div>
       </div>
     )

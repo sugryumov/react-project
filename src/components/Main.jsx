@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import getUsers from '../actions/user';
+import actionArticle from '../actions/article';
 
 import Header from './Header/';
 import Content from './Content';
@@ -16,6 +17,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.actionGetUsers();
+    this.props.actionGetArticle.getArticles();
   }
 
   render() {
@@ -35,7 +37,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDespatchToProps = dispatch => ({
-  actionGetUsers: bindActionCreators(getUsers, dispatch)
+  actionGetUsers: bindActionCreators(getUsers, dispatch),
+  actionGetArticle: bindActionCreators(actionArticle, dispatch)
 })
 
 export default connect(mapStateToProps, mapDespatchToProps)(Main);
