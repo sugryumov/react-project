@@ -8,7 +8,8 @@ const initialState = {
   newUserLogin: null,
   newUserPassword: null,
   isRegistrataion: false,
-  errorEmptyField: false
+  errorEmptyField: false,
+  existsUser: false,
 }
 
 export function loginReducer(state = initialState, action) {
@@ -40,7 +41,9 @@ export function loginReducer(state = initialState, action) {
         error: false,
         userLogin: null,
         userPassword: null,
-        isRegistrataion: false
+        isRegistrataion: false,
+        existsUser: false,
+        errorEmptyField: false
       }
 
     case constant.NEW_USER_INPUT_CHANGED_LOGIN:
@@ -59,7 +62,10 @@ export function loginReducer(state = initialState, action) {
       return {
         ...state,
         isRegistrataion: action.payload,
-        errorEmptyField: action.error
+        errorEmptyField: action.error,
+        existsUser: action.existsUser,
+        newUserLogin: null,
+        userPassword: null
       }
   }
 

@@ -36,8 +36,6 @@ class Navigation extends React.Component {
   }
 
   render() {
-
-    console.log('nav', this.props)
     const navigation = this.props.showMenu &&
       <nav className="nav">
         <ul className="nav__list">
@@ -50,7 +48,6 @@ class Navigation extends React.Component {
         <div className={ "navigation " + (this.props.showMenu ? 'navigation__open' : 'navigation__hidden') }>
           { navigation }
         </div>
-
         <button
           className={ "nav__button " + (this.props.showMenu ? 'nav__show' : 'nav__hidden') }
           onClick = { () => this.props.navAction.openNavigation() }>

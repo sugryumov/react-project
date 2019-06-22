@@ -47,7 +47,7 @@ class Comment extends React.Component {
                 <button
                   className="new-comment__btn"
                   type="reset"
-                  onClick={ (e) => this.props.actionGetArticle.submitComment(e, this.props.commentText, this.props.comment, this.props.userLogin, getArticleComment) }
+                  onClick={ () => this.props.actionGetArticle.submitComment(this.props.commentText, this.props.comment, this.props.userLogin, getArticleComment) }
                 >Написать</button>
               </form>
             </>

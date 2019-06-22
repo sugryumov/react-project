@@ -13,11 +13,14 @@ class Article extends React.Component {
   }
 
   render() {
+    const articleId = +this.props.match.params.id;
+    const selectedArticle = this.props.article.article.find(article => article.id === articleId);
+
     return (
       <div className="article-page">
         <div className="container">
-          <h1 className="article-page__title">{this.props.selectedArticle.title}</h1>
-          <p className="article-page__text">{ this.props.selectedArticle.body }</p>
+          <h1 className="article-page__title">{ selectedArticle.title}</h1>
+          <p className="article-page__text">{ selectedArticle.body }</p>
 
           <div className="article-page__controls">
             <Route 
@@ -32,21 +35,20 @@ class Article extends React.Component {
               }}
             />
             <div className="controls__like">
-              <div className="like__count">{ this.props.countLike }</div>
+              <div className="like__count">{ this.props.article.likeData[articleId].value }</div>
               {
-                this.props.isLoggedIn
+                this.props.login.isLoggedIn
                 ?
                 <div
-                  className={ (this.props.isLike ? 'like__icon--active' : 'like__icon') }
-                  onClick={ () => this.props.actionGetArticle.isLike(this.props.countLike, this.props.isLike) }>
+                  className={ this.props.article.likeData[articleId].status ? 'like__icon--active' : 'like__icon' }
+                  onClick={ () => this.props.actionGetArticle.handleLike(articleId, this.props.article.likeData) }>
                 </div>
                 :
                 <div className='like__icon'></div>
               }
-
             </div>
           </div>
-          <Comment selectedArticle={this.props.selectedArticle}/>
+          <Comment selectedArticle={ selectedArticle }/>
         </div>
       </div>
     )
@@ -54,11 +56,7 @@ class Article extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  article: state.article.article,
-  isLoggedIn: state.login.isLoggedIn,
-  comment: state.article.comment,
-  isLike: state.article.isLike,
-  countLike: state.article.countLike,
+  ...state,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -31,16 +31,18 @@ const actionArticle = {
       })();
     }
   },
+  
+  handleLike(index, isLike) {
+      const newLikeData = isLike;
 
-  isLike(counLike, isLike) {
-    const incrementLike = isLike ? counLike - 1 : counLike + 1;
+      newLikeData[index].status = !isLike[index].status;
+      newLikeData[index].value = isLike[index].status ? newLikeData[index].value + 1 : newLikeData[index].value - 1;
 
-    return {
-      type: IS_LIKE,
-      payload: true,
-      countLike: incrementLike
-    }
-  },
+      return {
+        type: IS_LIKE,
+        like: newLikeData,
+      }
+    },
 
   saveUserChandeCommet(value) {
     return {
@@ -49,9 +51,7 @@ const actionArticle = {
     }
   },
 
-  submitComment(e, commentText, commentArray, userLogin, selectedPost) {
-    console.log(commentArray)
-    // e.preventDefault();
+  submitComment(commentText, commentArray, userLogin, selectedPost) {
     if (!commentText.length) {
       return console.log('Введите комментарии');
     }
@@ -59,7 +59,8 @@ const actionArticle = {
     const newItem = {
       body: commentText,
       name: userLogin,
-      postId: selectedPost
+      postId: selectedPost,
+      key: selectedPost
     };
 
     const addNewComment = commentArray.concat(newItem);

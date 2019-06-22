@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Article from '../Article';
 import './ArticleContainer.css';
@@ -21,9 +20,10 @@ class ArticleContainer extends React.Component {
       }
     }
 
-    const getImage = this.props.image.map(img => img.download_url);
-  
-    const getArticleList = this.props.article.map((articleData, indexImg) => {
+    const getImage = this.props.article.image.map(img => img.download_url);
+    const getLikeValue = this.props.article.likeData.map(value => value.value);
+
+    const getArticleList = this.props.article.article.map((articleData, indexImg) => {
       return (
         <li className="articles__item" key={ articleData.id }>
           <div className="article">
@@ -40,7 +40,7 @@ class ArticleContainer extends React.Component {
 
               <div className="article__info">
                 <p className="article__meta">June 19, 2019</p>
-                <p className="article__view">Like { this.props.countLike }</p>
+                <p className="article__view">Like { getLikeValue[articleData.id] }</p>
               </div>
             </div>
           </div>
@@ -74,17 +74,12 @@ class ArticleContainer extends React.Component {
               </div>
             </section>
           )
-        }}/>
+        }}
+      />
 
         <Route
           path={'/articles/:id'}
-          exact
-          render={ (props) => {
-            const articleId = +props.match.params.id;
-            const selectedArticle = this.props.article.find(article => article.id === articleId);
-            
-            return <Article selectedArticle={ selectedArticle }/>
-          }}
+          component={ Article }
         />
       </>
     )
@@ -92,9 +87,7 @@ class ArticleContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  article: state.article.article,
-  image: state.article.image,
-  countLike: state.article.countLike,
+  ...state,
 });
 
 export default connect(mapStateToProps)(ArticleContainer);

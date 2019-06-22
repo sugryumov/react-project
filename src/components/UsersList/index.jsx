@@ -48,17 +48,7 @@ class UserContainer extends React.Component {
             </section>
           )
         }}/>
-
-        <Route
-          path={'/users/:username'}
-          exact
-          render={ (props) => {
-            const userId = props.match.params.username;
-            console.log(userId)
-            const selectedUser = this.props.user.find(user => user.username === userId);
-            return <User selectedUser={ selectedUser }/>
-          }}
-        />
+        <Route  path={'/users/:username'} exact component={ User } />
       </>
     )
   }

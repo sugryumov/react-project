@@ -47,13 +47,13 @@ class Registration extends React.Component {
               />
               <button
                 className="form__button"
-                type="button"
+                type="reset"
                 onClick={ () => this.props.actionLogin.onRegistration(this.props.newUserLogin, this.props.newUserPassword, this.props.user) }
               >
                 Зарегистрироваться
               </button>
-
               { this.props.errorEmptyField ? <p className="error">Заполните все поля</p> : null }
+              { this.props.existsUser ? <p className="error">Пользователь с таким именем существует</p> : null }
             </form>
           </>
         }
@@ -68,6 +68,7 @@ const mapStateToProps = state => ({
   newUserPassword: state.login.newUserPassword,
   isRegistrataion: state.login.isRegistrataion,
   errorEmptyField: state.login.errorEmptyField,
+  existsUser: state.login.existsUser,
   user: state.user.user
 });
 

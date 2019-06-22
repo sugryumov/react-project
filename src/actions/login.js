@@ -32,8 +32,6 @@ const actionLogin = {
   },
 
   logOut() {
-    // sessionStorage.removeItem('userList');
-
     return {
       type: constant.USER_LOG_OUT,
       payload: false
@@ -55,21 +53,25 @@ const actionLogin = {
   },
 
   onRegistration(saveNewLoginInputValue, saveNewPasswordInputValue, user) {
-    const emptyValue = saveNewLoginInputValue !== null && saveNewPasswordInputValue !== null;
     const emptyValueError = saveNewLoginInputValue === null || saveNewPasswordInputValue === null;
 
-    if (emptyValue) {
+    const existsUser = user.some(userName => {
+      return saveNewLoginInputValue === userName.username
+    });
+
+    if (!emptyValueError && !existsUser) {
       user.push({
         username: saveNewLoginInputValue
       })
-    }
+    };
 
-    // sessionStorage.setItem("userList", newUser);
+    const isRegistration = !emptyValueError && !existsUser;
 
     return {
       type: constant.USER_REGISTRATION,
-      payload: emptyValue,
+      payload: isRegistration,
       error: emptyValueError,
+      existsUser: existsUser
     }
   },
 }

@@ -6,22 +6,17 @@ import UserControl from '../UserControl';
 
 import './Header.css';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function Header () {
+  return (
+    <header className="header">
+      <div className="container header__container">
+        <Logotype />
+        <Navigation />
+        <UserControl />
+      </div>
+    </header>
+  )
+}
 
-  render() {
-    return (
-      <header className="header">
-        <div className="container header__container">
-          <Logotype />
-          <Navigation />
-          <UserControl />
-        </div>
-      </header>
-    )
-  }
-};
 
 export default Header;

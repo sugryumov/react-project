@@ -1,5 +1,7 @@
 import { GET_ARTICLE_REQUEST, GET_ARTICLE_SUCCESS, GET_ARTICLE_FAILED, IS_LIKE, USER_COMMENT_CHANGED, USER_COMMENT_SUBMIT } from '../constants';
 
+import { likeData } from '../likeData';
+
 const initialState = {
   article: [],
   image: [],
@@ -7,8 +9,7 @@ const initialState = {
   commentText: '',
   isLoadingArticle: false,
   articleLoadingError: '',
-  isLike: false,
-  countLike: 0
+  likeData: likeData
 }
 
 export function articleReducer(state = initialState, action) {
@@ -39,8 +40,7 @@ export function articleReducer(state = initialState, action) {
     case IS_LIKE:
       return {
         ...state,
-        isLike: !state.isLike,
-        countLike: action.countLike
+        likeData: action.like,
       }
 
     case USER_COMMENT_CHANGED:
