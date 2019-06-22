@@ -2,16 +2,7 @@ import React from 'react';
 
 import './Footer.css'
 
-class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      people: []
-    }
-  }
-
-  render() {
+function Footer() {
     return (
       <footer className="footer">
         <div className="container footer__container">
@@ -20,7 +11,6 @@ class Footer extends React.Component {
         </div>
       </footer>
     )
-  }
 }
 
 export default Footer;

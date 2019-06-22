@@ -5,12 +5,20 @@
 .article-page__title {
   padding-bottom: 2rem;
   font-size: 3.4rem;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .article-page__text {
   padding-bottom: 2rem;
   font-size: 1.6rem;
   line-height: 1.6;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
 
   @media all and (min-width: 600px) {
     font-size: 2rem;

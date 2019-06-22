@@ -1,13 +1,17 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import pagesReducer from './pages';
-import loginReducer from './login';
-import registrationReducer from './registration';
+import { pageReducer } from './page';
+import { userReducer } from './user';
+import { loginReducer } from './login';
+import { articleReducer } from './article';
+import { navigationReducer } from './navigation';
 
 export default history => combineReducers({
-  pages: pagesReducer,
+  page: pageReducer,
+  user: userReducer,
   login: loginReducer,
-  registration: registrationReducer,
+  article: articleReducer,
+  navigation: navigationReducer,
   router: connectRouter(history)
 });

@@ -56,3 +56,9 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.error {
+  margin-top: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}

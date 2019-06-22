@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Intro from '../Intro/';
 import ArticleContainer from '../ArticleContainer/';
-import UsersContainer from '../UserContainer/';
+import UsersList from '../UsersList/';
 import NotFound from '../NotFound/';
 import Login from '../Login/';
 import Registration from '../Registration/';
@@ -16,9 +16,9 @@ class Content extends React.Component {
   render() {
     return(
       <Switch>
-        <Route path='/' exact render={() => <Intro /> } />
+        <Route path='/' exact render={ () => <Intro /> } />
         <Route path='/articles' render={ () => <ArticleContainer/> } />
-        <Route path='/users' render={ () => <UsersContainer/> } />
+        <Route path='/users' render={ () => <UsersList/> } />
         <Route path='/contacts' render={ () => <NotFound /> } />
         <Route path='/login' render={ () => <Login /> } />
         <Route path='/registration' render={ () => <Registration /> } />

@@ -1,89 +1,56 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import navgationAction from '../../actions/navigation'
 import './Navigation.css';
 
 class Navigation extends React.Component {
   constructor(props) {
     super(props);
+  }
 
-    const lWidth = window.screen.width;
-    if (lWidth <= 600) {
-      this.state = {
-        isOpen: false
-      }
-    } else {
-      this.state = {
-        isOpen: true
-      }
-    }
-
-    this.openNavigation = this.openNavigation.bind(this);
-    this.closeNavigationMobile = this.closeNavigationMobile.bind(this);
+  componentDidMount() {
+    this.props.navAction.closeNavigationMobile()
   }
 
   getList() {
-    return this.props.pages.map((item, index) => {
-      if (this.props.isLoggedIn && item.path === '/login') {
-        return
-      } else if (this.props.isLoggedIn && item.path === '/registration') {
-        return
-      }
-
+    return this.props.page.map((item, index) => {
       return (
         <li className="nav__item" key={ index }>
-          <NavLink exact={true} activeClassName="nav__link--active" to={ item.path }
+          <NavLink
+            exact={ true }
+            activeClassName="nav__link--active"
+            to={ item.path }
             className="nav__link"
             onClick={ () =>  {
-              this.closeNavigationMobile()
+              this.props.navAction.closeNavigationMobile()
             }}
-          >{ item.name }</NavLink>
+          >
+          { item.name }
+          </NavLink>
         </li>
       )
     });
   }
 
-  closeNavigationMobile() {
-    const lWidth = window.screen.width;
-
-    if (lWidth <= 600) {
-      this.setState ({
-        isOpen: false
-      })
-    } else {
-      this.setState ({
-        isOpen: open
-      })
-    }
-  }
-
-  openNavigation() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
   render() {
-    const isLoggined = this.props.isLoggedIn && <p className='user__name'>{ this.props.userLogin }</p>
-
-    const navigation = this.state.isOpen &&
+    const navigation = this.props.showMenu &&
       <nav className="nav">
         <ul className="nav__list">
           { this.getList() }
-          { isLoggined }
         </ul>
       </nav>
 
     return(
       <>
-        <div className={ "navigation " + (this.state.isOpen ? 'navigation__open' : 'navigation__hidden') }>
+        <div className={ "navigation " + (this.props.showMenu ? 'navigation__open' : 'navigation__hidden') }>
           { navigation }
         </div>
-
         <button
-          className={ "nav__button " + (this.state.isOpen ? 'nav__show' : 'nav__hidden') }
-          onClick = { this.openNavigation }>
+          className={ "nav__button " + (this.props.showMenu ? 'nav__show' : 'nav__hidden') }
+          onClick = { () => this.props.navAction.openNavigation() }>
           <span className="nav__line"></span>
         </button>
       </>
@@ -92,9 +59,13 @@ class Navigation extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  pages: state.pages.pages,
-  isLoggedIn: state.login.isLoggedIn,
-  userLogin: state.login.userLogin,
+    page: state.page.pages,
+    showMenu: state.navigation.showMenu,
+    isOpen: state.navigation.isOpen
 });
 
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = dispatch => ({
+  navAction: bindActionCreators(navgationAction, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

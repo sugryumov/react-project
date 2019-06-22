@@ -1,0 +1,97 @@
+.user-control {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  padding-right: 50px;
+
+  @media all and (min-width: 600px) {
+    padding-right: 0;
+  }
+}
+
+.user-control__name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 3.4rem;
+  text-transform: uppercase;
+  background: linear-gradient(to right,#ff8a00,#da1b60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+  text-align: center;
+}
+
+.user-control__logout-wrap {
+  display: flex;
+}
+
+.user-control__button-logout {
+  -webkit-appearance: none;
+    border: none;
+    background-image: linear-gradient(to top left,#ff8a00,#da1b60);
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 3rem;
+    margin-left: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.user-control__button {
+    margin-right: 2rem;
+}
+
+.user-control__button-login,
+.user-control__button-registration {
+  position: relative;
+  display: block;
+  font-size: 0;
+  width: 30px;
+  height: 30px;
+
+  @media all and (min-width: 600px) {
+    display: initial;
+    width: auto;
+    height: auto;
+    font-size: 1.6rem;
+  }
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @media all and (min-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+.user-control__button-login {
+  &::before {
+    background-image: url('../../img/login-icon.png');
+  }
+}
+
+.user-control__button-registration {
+  &::before {
+    background-image: url('../../img/registration-icon.png');
+  }
+}
+
+.user-control__link {
+  display: flex;
+  padding-right: 50px;
+
+  @media all and (min-width: 600px) {
+    display: initial;
+    height: auto;
+  }
+}

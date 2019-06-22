@@ -1,37 +1,73 @@
-import * as constants from '../constants';
+import * as constant from '../constants';
 
 const initialState = {
   userLogin: null,
-  userPassword: '',
+  userPassword: null,
   isLoggedIn: false,
-};
+  error: false,
+  newUserLogin: null,
+  newUserPassword: null,
+  isRegistrataion: false,
+  errorEmptyField: false,
+  existsUser: false,
+}
 
-export default function(state = initialState, action) {
+export function loginReducer(state = initialState, action) {
 
   switch(action.type) {
-    case constants.USER_INPUT_LOGIN_CHANGED_LOG: {
+    case constant.USER_INPUT_CHANGED_LOGIN:
       return {
         ...state,
-        userLogin: action.payload,
-      };
-    }
+        userLogin: action.payload
+      }
 
-    case constants.USER_INPUT_LOGIN_CHANGED_PASS: {
+    case constant.USER_INPUT_CHANGED_PASSWORD:
       return {
         ...state,
         userPassword: action.payload
       }
-    }
 
-    case constants.USER_LOGGED_IN: {
+    case constant.USER_LOGGED_IN:
       return {
         ...state,
-        isLoggedIn: action.payload
+        isLoggedIn: action.payload,
+        error: action.error
       }
-    }
+
+    case constant.USER_LOG_OUT:
+      return {
+        ...state,
+        isLoggedIn: action.payload,
+        error: false,
+        userLogin: null,
+        userPassword: null,
+        isRegistrataion: false,
+        existsUser: false,
+        errorEmptyField: false
+      }
+
+    case constant.NEW_USER_INPUT_CHANGED_LOGIN:
+      return {
+        ...state,
+        newUserLogin: action.payload
+      }
+
+    case constant.NEW_USER_INPUT_CHANGED_PASSWORD:
+      return {
+        ...state,
+        newUserPassword: action.payload
+      }
+
+    case constant.USER_REGISTRATION:
+      return {
+        ...state,
+        isRegistrataion: action.payload,
+        errorEmptyField: action.error,
+        existsUser: action.existsUser,
+        newUserLogin: null,
+        userPassword: null
+      }
   }
 
   return state;
 }
-
- 

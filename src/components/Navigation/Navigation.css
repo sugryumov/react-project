@@ -6,7 +6,7 @@
   box-sizing: border-box;
   width: 100%;
 
-  @media all and (min-width: 600px) {
+  @media all and (min-width: 900px) {
     position: inherit;
     padding: 0;
     width: auto;
@@ -23,7 +23,7 @@
   margin-top: 8rem;
   height: calc(100vh - 8rem);
 
-  @media all and (min-width: 600px) {
+  @media all and (min-width: 900px) {
     margin-top: 0;
     height: auto;
   }
@@ -34,7 +34,7 @@
   height: 100%;
   background-color: var(--bg-tertiary);
 
-  @media all and (min-width: 600px) {
+  @media all and (min-width: 900px) {
     display: flex;
     padding: 0;
   }
@@ -46,16 +46,13 @@
     margin-bottom: 3rem;
   }
 
-  @media all and (min-width: 600px) {
+  @media all and (min-width: 900px) {
     &:not(:last-child) {
       margin-right: 3rem;
       margin-bottom: 0;
       text-align: left;
+      width: 33%;
     }
-  }
-
-  @media all and (min-width: 900px) {
-    width: 33%;
   }
 }
 
@@ -67,12 +64,16 @@
   cursor: pointer;
 
   &:hover {
-    padding-bottom: 0.15rem;
-    border-bottom: 1px solid #da1b60;
-    background: linear-gradient(to right, #ff8a00, #da1b60);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    box-decoration-break: clone;
+    border-bottom: none;
+
+    @media all and (min-width: 900px) {
+      padding-bottom: 0.15rem;
+      border-bottom: 1px solid #da1b60;
+      background: linear-gradient(to right, #ff8a00, #da1b60);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      box-decoration-break: clone;
+    }
   }
 }
 
@@ -88,13 +89,14 @@
   background: transparent;
   border: none;
   position: absolute;
+  z-index: 5;
   right: 2rem;
   top: 2.5rem;
   display: block;
   width: 3rem;
   height: 3rem;
 
-  @media all and (min-width: 600px) {
+  @media all and (min-width: 900px) {
     display: none;
   }
 }
@@ -146,14 +148,3 @@
   }
 }
 
-.user__name {
-  font-size: 1.8rem;
-  font-weight: bold;
-  line-height: 3.4rem;
-  text-transform: uppercase;
-  background: linear-gradient(to right,#ff8a00,#da1b60);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  box-decoration-break: clone;
-  text-align: center;
-}
