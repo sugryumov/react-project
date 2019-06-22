@@ -14,8 +14,6 @@ const getUsers = () => {
           type: GET_USERS_SUCCESS,
           payload: response.data.slice(0, 6),
         });
-
-        // sessionStorage.setItem('userList', JSON.stringify(response.data));
       })
 
       .catch(err => {
