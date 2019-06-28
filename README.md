@@ -2,11 +2,11 @@
 https://sugryumov.github.io/react-project/
 
 ## Используется:
-1. "react": "^16.8.6"
-2. "redux": "^4.0.1"
-3. "react-redux": "^7.1.0"
-4. "react-router-dom": "^5.0.1"
-5. "axios": "^0.19.0"
+- "react": "^16.8.6"
+- "redux": "^4.0.1"
+- "react-redux": "^7.1.0"
+- "react-router-dom": "^5.0.1"
+- "axios": "^0.19.0"
 
 ## Запуск:
 ```
